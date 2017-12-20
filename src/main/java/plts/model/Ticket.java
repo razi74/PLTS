@@ -3,19 +3,12 @@ package plts.model;
 import java.time.Instant;
 
 public final class Ticket {
-	
-	//private Vehicle vehicle;
+		
 	private String ticketNumber;
 	private Slot slot;
 	private Instant inTimestamp;
 	private Instant outTimestamp;
 	
-/*	public Vehicle getVehicle() {
-		return vehicle;
-	}
-	public void setVehicle(Vehicle vehicle) {
-		this.vehicle = vehicle;
-	}*/
 	public String getTicketNumber() {
 		return ticketNumber;
 	}
@@ -39,9 +32,6 @@ public final class Ticket {
 	}
 	public void setOutTimestamp(Instant outTimestamp) {
 		this.outTimestamp = outTimestamp;
-	}
-
-
-	
+	}	
 	
 }

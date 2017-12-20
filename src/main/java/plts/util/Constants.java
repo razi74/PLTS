@@ -2,9 +2,7 @@ package plts.util;
 
 public enum Constants {
 	
-	TIMESTAMPSTRING("yyyyMMddHHmmssSSSSS"),
-	TIMESTAMPFORMAT("yyyy-MM-dd HH:mm:ss.S"),
-	DATEFORMAT("yyyy-MM-dd"),
+	TIMESTAMPSTRING("yyyyMMddHHmmssSSSSS"),	
 	EMPTY(""),	
 	SPACE(" "),
 	TAB("\t"),
@@ -19,7 +17,10 @@ public enum Constants {
 	CREATE_PARKING_LOT ( "create_parking_lot"),
 	PARK("park"),
 	INVALID_NUMBER_OF_ARGUMENTS("Invalid number of arguments"),
-	OUTPUT ("Output: ");
+	OUTPUT ("Output: "),
+	INPUTLINE("inputline"),
+	OUTPUTPREPENDLINE("outputprependline"),
+	ENGINE("engine");
 	
 	private String value;
 	

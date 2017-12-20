@@ -9,34 +9,32 @@ import java.util.List;
 import plts.util.Constants;
 
 public class ParkingLot {
-	
+
 	private Integer numberOfSlots;
 	private List<Slot> slotList;
-	
+
 	public ParkingLot(Integer numberOfLots) {
 		super();
 		this.numberOfSlots = numberOfLots;
 		this.slotList = new LinkedList<>();
 		for (int i = 0; i < numberOfLots; i++) {
-			Slot slot = new Slot((long) (i+1));
+			Slot slot = new Slot((long) (i + 1));
 			this.slotList.add(slot);
-		}		
+		}
 	}
-	
+
 	public Ticket fillSlot(Vehicle vehicle) {
-		
-		if(slotList!=null)
-		{
+
+		if (slotList != null) {
 			for (Slot slot : slotList) {
-				if(slot.isAvailable())
-				{
+				if (slot.isAvailable()) {
 					slot.setAvailable(false);
 					slot.setVehicle(vehicle);
 					Ticket ticket = new Ticket();
-					ticket.setSlot(slot);					
-					ticket.setInTimestamp(Instant.now());					
+					ticket.setSlot(slot);
+					ticket.setInTimestamp(Instant.now());
 					SimpleDateFormat sdf = new SimpleDateFormat(Constants.TIMESTAMPSTRING.value());
-					Date date = new Date();	
+					Date date = new Date();
 					ticket.setTicketNumber(sdf.format(date));
 					return ticket;
 				}
@@ -44,14 +42,11 @@ public class ParkingLot {
 		}
 		return null;
 	}
-	
-	public boolean clearSlot(Slot slot)
-	{
-		if(slotList!=null)
-		{
+
+	public boolean clearSlot(Slot slot) {
+		if (slotList != null) {
 			for (Slot slotObj : slotList) {
-				if(slot.getSlotNumber().equals(slotObj.getSlotNumber()))
-				{
+				if (slot.getSlotNumber().equals(slotObj.getSlotNumber())) {
 					slotObj.setAvailable(true);
 					slotObj.setVehicle(null);
 					return slotObj.isAvailable();
@@ -60,9 +55,10 @@ public class ParkingLot {
 		}
 		return false;
 	}
-	
-	public ParkingLot() {	}
-	
+
+	public ParkingLot() {
+	}
+
 	public Integer getNumberOfLots() {
 		return numberOfSlots;
 	}
@@ -74,25 +70,10 @@ public class ParkingLot {
 	public void setSlot(List<Slot> slot) {
 		this.slotList = slot;
 	}
-	
-	/*public Slot getAvailableSlot() {
-		
-		if(slotList!=null)
-		{
-			for (Slot slot : slotList) {
-				if(slot.isAvailable())
-				{
-					return slot;
-				}
-			}
-		}
-		return null;
-	}*/
 
 	@Override
 	public String toString() {
 		return "ParkingLot [numberOfSlots=" + numberOfSlots + ", slot=" + slotList + "]";
 	}
-
 
 }
