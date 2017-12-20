@@ -16,9 +16,9 @@ import plts.command.StatusCommand;
 import plts.util.Constants;
 
 public class Main {
-
-	public static void main(String[] args) {
-
+	
+	public  Map<String,Object> execute(String[] args)
+	{
 		Map<String, InputCommand> commandMap = new HashMap<>(7);
 		commandMap.put(Constants.CREATE_PARKING_LOT.value(), new CreatePLCommand());
 		commandMap.put(Constants.PARK.value(), new ParkCommand());
@@ -28,7 +28,7 @@ public class Main {
 		commandMap.put(Constants.REGISTRATION_NUMBERS_FOR_CARS_WITH_COLOUR.value(), fetchcmd);
 		commandMap.put(Constants.SLOT_NUMBERS_FOR_CARS_WITH_COLOUR.value(), fetchcmd);
 		commandMap.put(Constants.SLOT_NUMBER_FOR_REGISTRATION_NUMBER.value(), fetchcmd);
-
+		Map<String,Object> map = null ;
 		PLTSEngine engine = null;
 		String line;
 		if (args != null && args.length == 0) {
@@ -41,11 +41,17 @@ public class Main {
 						final String[] result = line.split(" ");
 						if (result.length > 0 && !result[0].equals("exit")) {
 							InputCommand icmd = commandMap.get(result[0]);
+							if(icmd==null)
+							{
+								map = new HashMap<>();
+								map.put(Constants.RETURNSTR.value(),Constants.INVALID_COMMAND.value());
+								return map;
+							}
 							Map<String,Object> inputmap = new HashMap<>(3);
 							inputmap.put(Constants.INPUTLINE.value(),line);
 							inputmap.put(Constants.OUTPUTPREPENDLINE.value(), Constants.OUTPUT.value());
 						    inputmap.put(Constants.ENGINE.value(),engine);
-						    Map<String,Object> map = icmd.execute(inputmap);
+						    map = icmd.execute(inputmap);
 						    if(map!=null) {
 						    	engine = (PLTSEngine) map.get(Constants.ENGINE.value());
 						    }
@@ -72,11 +78,17 @@ public class Main {
 						final String[] result = line.split(" ");
 						if (result.length > 0 && !result[0].equals("exit")) {
 							InputCommand icmd = commandMap.get(result[0]);
+							if(icmd==null)
+							{
+								map = new HashMap<>();
+								map.put(Constants.RETURNSTR.value(),Constants.INVALID_COMMAND.value());
+								return map;
+							}
 							Map<String,Object> inputmap = new HashMap<>(3);
 							inputmap.put(Constants.INPUTLINE.value(),line);
 							inputmap.put(Constants.OUTPUTPREPENDLINE.value(), null);
 						    inputmap.put(Constants.ENGINE.value(),engine);
-						    Map<String,Object> map = icmd.execute(inputmap);
+						    map = icmd.execute(inputmap);
 						    if(map!=null) {
 						    	engine = (PLTSEngine) map.get(Constants.ENGINE.value());
 						    }
@@ -91,5 +103,10 @@ public class Main {
 		} else if (args != null && args.length > 1) {
 			System.out.println(Constants.INVALID_NUMBER_OF_ARGUMENTS.value());
 		}
+		return map;	
+	}
+	public static void main(String[] args) {
+		Main main = new Main();
+		main.execute(args);		
 	}
 }

@@ -1,0 +1,2 @@
+create_parking_lot 10
+par KA-01-HH-1234 White

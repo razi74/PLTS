@@ -17,13 +17,18 @@ public enum Constants {
 	CREATE_PARKING_LOT ( "create_parking_lot"),
 	PARK("park"),
 	INVALID_NUMBER_OF_ARGUMENTS("Invalid number of arguments"),
+	INVALID_COMMAND("Invalid command"),
 	OUTPUT ("Output: "),
 	INPUTLINE("inputline"),
 	OUTPUTPREPENDLINE("outputprependline"),
-	ENGINE("engine");
-	
+	ENGINE("engine"),
+	CREATED_A_PARKING_LOT_WITH ("Created a parking lot with "), 
+	RETURNSTR("returnstr"),
+	SORRY_PARKING_LOT_IS_FULL("Sorry, parking lot is full"),
+	ALLOCATED_SLOT_NUMBER ("Allocated slot number: ");
 	private String value;
 	
+		
 	private Constants(String value)
 	{
 		this.value = value;

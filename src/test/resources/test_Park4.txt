@@ -1,0 +1,2 @@
+create_parking_lot 10
+park KA-01-HH-1234 hoho White

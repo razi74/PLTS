@@ -15,13 +15,20 @@ public class CreatePLCommand implements InputCommand {
 	public Map<String,Object> execute(Map<String,Object> inputmap) {
 		
 		PLTSEngine engine;
+		StringBuilder str = new StringBuilder(Constants.CREATED_A_PARKING_LOT_WITH.value());
 		final String line =(String) inputmap.get(Constants.INPUTLINE.value());
 		final String outputprepend =(String) inputmap.get(Constants.OUTPUTPREPENDLINE.value());
-		char initSizeChar = line.charAt(line.length() - 1);
-		int initSize = Character.getNumericValue(initSizeChar);
+		String [] result  = line.split(Constants.SPACE.value());		
+		try {
+		int initSize = Integer.valueOf(result[1]);
+		if(initSize<0)
+		{
+			inputmap.put(Constants.RETURNSTR.value(),Constants.INVALID_COMMAND.value());
+			return inputmap;
+		}
 		engine = new PLTSEngine(initSize);
 		if (engine != null && engine.getParkingLot() != null) {
-			StringBuilder str = new StringBuilder("Created a parking lot with ").append(initSize).append(" slots");
+			str.append(initSize).append(" slots");
 			if(outputprepend!=null)
 			{
 				System.out.println(outputprepend);			
@@ -29,6 +36,12 @@ public class CreatePLCommand implements InputCommand {
 			System.out.println(str);
 		}
 		inputmap.put(Constants.ENGINE.value(), engine);
+		inputmap.put(Constants.RETURNSTR.value(), str.toString());
+		}catch(Exception e)
+		{
+			//e.printStackTrace();
+			inputmap.put(Constants.RETURNSTR.value(),Constants.INVALID_NUMBER_OF_ARGUMENTS.value());
+		}
 		return inputmap;
 	}
 }
