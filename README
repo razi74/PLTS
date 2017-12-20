@@ -1,8 +1,9 @@
 Requirements::
 JDK 1.8 installation.
 Maven 3.3.9 installation.
-Input file- file_inputs.txt to be available under plts directory
+Input file "file_inputs.txt" to be available under plts directory
 Edit the parking_lot.sh file to point to the JAVA_HOME and update the PATH variable
 
 Usage::
-To exit interactive mode type exit on the console.
+Execute  ./parking_lot.sh file_inputs.txt   file mode
+			   ./parking_lot.sh							interactive mode, to exit interactive mode type exit on the console.

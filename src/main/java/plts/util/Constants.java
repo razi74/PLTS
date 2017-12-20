@@ -25,10 +25,12 @@ public enum Constants {
 	CREATED_A_PARKING_LOT_WITH ("Created a parking lot with "), 
 	RETURNSTR("returnstr"),
 	SORRY_PARKING_LOT_IS_FULL("Sorry, parking lot is full"),
-	ALLOCATED_SLOT_NUMBER ("Allocated slot number: ");
+	ALLOCATED_SLOT_NUMBER ("Allocated slot number: "),
+	SLOT_NUMBER("Slot number "),
+	IS_FREE(" is free");
+
 	private String value;
 	
-		
 	private Constants(String value)
 	{
 		this.value = value;
