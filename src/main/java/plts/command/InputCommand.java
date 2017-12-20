@@ -1,4 +1,4 @@
-package plts;
+package plts.command;
 
 import java.util.Map;
 

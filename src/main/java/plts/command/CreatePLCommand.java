@@ -1,7 +1,8 @@
-package plts;
+package plts.command;
 
 import java.util.Map;
 
+import plts.PLTSEngine;
 import plts.util.Constants;
 
 public class CreatePLCommand implements InputCommand {
