@@ -3,6 +3,7 @@ JDK 1.8 installation.
 Maven 3.3.9 installation.
 Input file "file_inputs.txt" to be available under plts directory
 Edit the parking_lot.sh file to point to the JAVA_HOME and update the PATH variable
+Grant permissions for the parking_lot.sh
 
 Usage::
 Execute  ./parking_lot.sh file_inputs.txt   file mode
