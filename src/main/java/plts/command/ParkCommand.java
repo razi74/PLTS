@@ -33,6 +33,11 @@ public class ParkCommand implements InputCommand {
 			} else {
 				Ticket ticket = engine.getParkingLot().fillSlot(car);
 				if (ticket == null) {
+					if(outputprepend!=null)
+					{
+						System.out.println();
+						System.out.println(outputprepend);	
+					}
 					System.out.println(Constants.SORRY_PARKING_LOT_IS_FULL.value());
 					inputmap.put(Constants.RETURNSTR.value(),Constants.SORRY_PARKING_LOT_IS_FULL.value());
 				} else {
