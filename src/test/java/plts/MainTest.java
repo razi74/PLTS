@@ -118,7 +118,47 @@ public class MainTest {
 		String [] args = new String[1];
 		args[0] = temp+"\\test_Leave.txt";
 		Map<String,Object> map = main.execute(args);
-		assertEquals(map.get(Constants.RETURNSTR.value()),Constants.CREATED_A_PARKING_LOT_WITH.value()+"10 slots");
-		assertEquals(((PLTSEngine)map.get(Constants.ENGINE.value())).getParkingLot().getNumberOfLots(),Integer.valueOf("10"));
+		assertEquals(map.get(Constants.RETURNSTR.value()),Constants.ALLOCATED_SLOT_NUMBER.value()+"1");
+		assertEquals(((PLTSEngine)map.get(Constants.ENGINE.value())).getParkingLot().getNumberOfLots(),Integer.valueOf("2"));
+	}
+	
+	@Test
+	public void testLeaveInvalidCommand() {
+		File resourcesDirectory = new File("src/test/resources");
+		String temp =resourcesDirectory.getAbsolutePath();
+		String [] args = new String[1];
+		args[0] = temp+"\\test_Leave2.txt";
+		Map<String,Object> map = main.execute(args);
+		assertEquals(map.get(Constants.RETURNSTR.value()),Constants.INVALID_COMMAND.value());
+	}
+	
+	@Test
+	public void testLeaveInvalidCommandLength() {
+		File resourcesDirectory = new File("src/test/resources");
+		String temp =resourcesDirectory.getAbsolutePath();
+		String [] args = new String[1];
+		args[0] = temp+"\\test_Leave3.txt";
+		Map<String,Object> map = main.execute(args);
+		assertEquals(map.get(Constants.RETURNSTR.value()),Constants.INVALID_NUMBER_OF_ARGUMENTS.value());		
+	}
+	
+	@Test
+	public void testLeaveInvalidCommandNegative() {
+		File resourcesDirectory = new File("src/test/resources");
+		String temp =resourcesDirectory.getAbsolutePath();
+		String [] args = new String[1];
+		args[0] = temp+"\\test_Leave4.txt";
+		Map<String,Object> map = main.execute(args);
+		assertEquals(map.get(Constants.RETURNSTR.value()),Constants.INVALID_COMMAND.value());			
+	}
+	
+	@Test
+	public void testLeaveDoesntExist() {
+		File resourcesDirectory = new File("src/test/resources");
+		String temp =resourcesDirectory.getAbsolutePath();
+		String [] args = new String[1];
+		args[0] = temp+"\\test_Leave5.txt";
+		Map<String,Object> map = main.execute(args);
+		assertEquals(map.get(Constants.RETURNSTR.value()),Constants.INVALID_COMMAND.value());		
 	}
 }

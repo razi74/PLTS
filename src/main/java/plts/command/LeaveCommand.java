@@ -19,6 +19,11 @@ public class LeaveCommand implements InputCommand {
 		final String outputprepend = (String) inputmap.get(Constants.OUTPUTPREPENDLINE.value());
 		final PLTSEngine engine = (PLTSEngine) inputmap.get(Constants.ENGINE.value());
 		String[] result = line.split(Constants.SPACE.value());
+		if (result.length != 2) {
+			//System.out.println(Constants.INVALID_NUMBER_OF_ARGUMENTS.value());
+			inputmap.put(Constants.RETURNSTR.value(),Constants.INVALID_NUMBER_OF_ARGUMENTS.value());
+			return inputmap;
+		}
 		try {
 			int initSize = Integer.valueOf(result[1]);
 			if (initSize < 0) {
@@ -28,13 +33,16 @@ public class LeaveCommand implements InputCommand {
 			Slot slot = new Slot((long) initSize);
 			boolean cleared = engine.getParkingLot().clearSlot(slot);
 			if (cleared) {
-				StringBuilder str = new StringBuilder(Constants.SLOT_NUMBER.value()).append(slot.getSlotNumber()).append(Constants.IS_FREE);
+				StringBuilder str = new StringBuilder(Constants.SLOT_NUMBER.value()).append(slot.getSlotNumber()).append(Constants.IS_FREE.value());
 				if (outputprepend != null) {
 					System.out.println(outputprepend);
 				}
 				System.out.println(str);
 				inputmap.put(Constants.ENGINE.value(), engine);
 				inputmap.put(Constants.RETURNSTR.value(), str.toString());
+			}else {
+				inputmap.put(Constants.ENGINE.value(), engine);
+				inputmap.put(Constants.RETURNSTR.value(), Constants.INVALID_COMMAND.value());
 			}
 		} catch (Exception e) {
 			// e.printStackTrace();

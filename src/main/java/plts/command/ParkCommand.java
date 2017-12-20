@@ -18,7 +18,7 @@ public class ParkCommand implements InputCommand {
 		final String line =(String) inputmap.get(Constants.INPUTLINE.value());
 		final String outputprepend =(String) inputmap.get(Constants.OUTPUTPREPENDLINE.value());
 		final PLTSEngine engine = (PLTSEngine) inputmap.get(Constants.ENGINE.value());
-		final String[] result = line.split(" ");
+		final String[] result = line.split(Constants.SPACE.value());
 		if (result.length != 3) {
 			//System.out.println(Constants.INVALID_NUMBER_OF_ARGUMENTS.value());
 			inputmap.put(Constants.RETURNSTR.value(),Constants.INVALID_NUMBER_OF_ARGUMENTS.value());
