@@ -24,7 +24,7 @@ public class MainTest {
 		File resourcesDirectory = new File("src/test/resources");
 		String temp =resourcesDirectory.getAbsolutePath();
 		String [] args = new String[1];
-		args[0] = temp+"\\test_CPL.txt";
+		args[0] = temp+"/test_CPL.txt";
 		Map<String,Object> map = main.execute(args);
 		assertEquals(map.get(Constants.RETURNSTR.value()),Constants.CREATED_A_PARKING_LOT_WITH.value()+"10 slots");
 		assertEquals(((PLTSEngine)map.get(Constants.ENGINE.value())).getParkingLot().getNumberOfLots(),Integer.valueOf("10"));
@@ -35,7 +35,7 @@ public class MainTest {
 		File resourcesDirectory = new File("src/test/resources");
 		String temp =resourcesDirectory.getAbsolutePath();
 		String [] args = new String[1];
-		args[0] = temp+"\\test_CPL2.txt";
+		args[0] = temp+"/test_CPL2.txt";
 		Map<String,Object> map = main.execute(args);
 		assertEquals(map.get(Constants.RETURNSTR.value()),Constants.INVALID_COMMAND.value());		
 	}
@@ -45,7 +45,7 @@ public class MainTest {
 		File resourcesDirectory = new File("src/test/resources");
 		String temp =resourcesDirectory.getAbsolutePath();
 		String [] args = new String[1];
-		args[0] = temp+"\\test_CPL3.txt";
+		args[0] = temp+"/test_CPL3.txt";
 		Map<String,Object> map = main.execute(args);
 		assertEquals(map.get(Constants.RETURNSTR.value()),Constants.INVALID_COMMAND.value());		
 	}
@@ -55,7 +55,7 @@ public class MainTest {
 		File resourcesDirectory = new File("src/test/resources");
 		String temp =resourcesDirectory.getAbsolutePath();
 		String [] args = new String[1];
-		args[0] = temp+"\\test_CPL4.txt";
+		args[0] = temp+"/test_CPL4.txt";
 		Map<String,Object> map = main.execute(args);
 		assertEquals(map.get(Constants.RETURNSTR.value()),Constants.INVALID_NUMBER_OF_ARGUMENTS.value());		
 	}
@@ -65,7 +65,7 @@ public class MainTest {
 		File resourcesDirectory = new File("src/test/resources");
 		String temp =resourcesDirectory.getAbsolutePath();
 		String [] args = new String[1];
-		args[0] = temp+"\\test_Park.txt";
+		args[0] = temp+"/test_Park.txt";
 		Map<String,Object> map = main.execute(args);
 		assertEquals(map.get(Constants.RETURNSTR.value()),Constants.ALLOCATED_SLOT_NUMBER.value()+"6");
 		assertEquals(((PLTSEngine)map.get(Constants.ENGINE.value())).getParkingLot().getNumberOfLots(),Integer.valueOf("10"));
@@ -76,7 +76,7 @@ public class MainTest {
 		File resourcesDirectory = new File("src/test/resources");
 		String temp =resourcesDirectory.getAbsolutePath();
 		String [] args = new String[1];
-		args[0] = temp+"\\test_Park2.txt";
+		args[0] = temp+"/test_Park2.txt";
 		Map<String,Object> map = main.execute(args);
 		assertEquals(map.get(Constants.RETURNSTR.value()),Constants.CREATE_PARKING_LOT.value());		
 	}
@@ -86,7 +86,7 @@ public class MainTest {
 		File resourcesDirectory = new File("src/test/resources");
 		String temp =resourcesDirectory.getAbsolutePath();
 		String [] args = new String[1];
-		args[0] = temp+"\\test_Park3.txt";
+		args[0] = temp+"/test_Park3.txt";
 		Map<String,Object> map = main.execute(args);
 		assertEquals(map.get(Constants.RETURNSTR.value()),Constants.INVALID_COMMAND.value());		
 	}
@@ -96,7 +96,7 @@ public class MainTest {
 		File resourcesDirectory = new File("src/test/resources");
 		String temp =resourcesDirectory.getAbsolutePath();
 		String [] args = new String[1];
-		args[0] = temp+"\\test_Park4.txt";
+		args[0] = temp+"/test_Park4.txt";
 		Map<String,Object> map = main.execute(args);
 		assertEquals(map.get(Constants.RETURNSTR.value()),Constants.INVALID_NUMBER_OF_ARGUMENTS.value());		
 	}
@@ -106,7 +106,7 @@ public class MainTest {
 		File resourcesDirectory = new File("src/test/resources");
 		String temp =resourcesDirectory.getAbsolutePath();
 		String [] args = new String[1];
-		args[0] = temp+"\\test_Park5.txt";
+		args[0] = temp+"/test_Park5.txt";
 		Map<String,Object> map = main.execute(args);
 		assertEquals(map.get(Constants.RETURNSTR.value()),Constants.SORRY_PARKING_LOT_IS_FULL.value());	
 		assertEquals(((PLTSEngine)map.get(Constants.ENGINE.value())).getParkingLot().getNumberOfLots(),Integer.valueOf("2"));
@@ -116,7 +116,7 @@ public class MainTest {
 		File resourcesDirectory = new File("src/test/resources");
 		String temp =resourcesDirectory.getAbsolutePath();
 		String [] args = new String[1];
-		args[0] = temp+"\\test_Leave.txt";
+		args[0] = temp+"/test_Leave.txt";
 		Map<String,Object> map = main.execute(args);
 		assertEquals(map.get(Constants.RETURNSTR.value()),Constants.ALLOCATED_SLOT_NUMBER.value()+"1");
 		assertEquals(((PLTSEngine)map.get(Constants.ENGINE.value())).getParkingLot().getNumberOfLots(),Integer.valueOf("2"));
@@ -127,7 +127,7 @@ public class MainTest {
 		File resourcesDirectory = new File("src/test/resources");
 		String temp =resourcesDirectory.getAbsolutePath();
 		String [] args = new String[1];
-		args[0] = temp+"\\test_Leave2.txt";
+		args[0] = temp+"/test_Leave2.txt";
 		Map<String,Object> map = main.execute(args);
 		assertEquals(map.get(Constants.RETURNSTR.value()),Constants.INVALID_COMMAND.value());
 	}
@@ -137,7 +137,7 @@ public class MainTest {
 		File resourcesDirectory = new File("src/test/resources");
 		String temp =resourcesDirectory.getAbsolutePath();
 		String [] args = new String[1];
-		args[0] = temp+"\\test_Leave3.txt";
+		args[0] = temp+"/test_Leave3.txt";
 		Map<String,Object> map = main.execute(args);
 		assertEquals(map.get(Constants.RETURNSTR.value()),Constants.INVALID_NUMBER_OF_ARGUMENTS.value());		
 	}
@@ -147,7 +147,7 @@ public class MainTest {
 		File resourcesDirectory = new File("src/test/resources");
 		String temp =resourcesDirectory.getAbsolutePath();
 		String [] args = new String[1];
-		args[0] = temp+"\\test_Leave4.txt";
+		args[0] = temp+"/test_Leave4.txt";
 		Map<String,Object> map = main.execute(args);
 		assertEquals(map.get(Constants.RETURNSTR.value()),Constants.INVALID_COMMAND.value());			
 	}
@@ -157,7 +157,7 @@ public class MainTest {
 		File resourcesDirectory = new File("src/test/resources");
 		String temp =resourcesDirectory.getAbsolutePath();
 		String [] args = new String[1];
-		args[0] = temp+"\\test_Leave5.txt";
+		args[0] = temp+"/test_Leave5.txt";
 		Map<String,Object> map = main.execute(args);
 		assertEquals(map.get(Constants.RETURNSTR.value()),Constants.INVALID_COMMAND.value());		
 	}

@@ -35,6 +35,7 @@ public class LeaveCommand implements InputCommand {
 			if (cleared) {
 				StringBuilder str = new StringBuilder(Constants.SLOT_NUMBER.value()).append(slot.getSlotNumber()).append(Constants.IS_FREE.value());
 				if (outputprepend != null) {
+					System.out.println();
 					System.out.println(outputprepend);
 				}
 				System.out.println(str);

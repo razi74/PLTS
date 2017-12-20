@@ -40,6 +40,7 @@ public class ParkCommand implements InputCommand {
 							.append(ticket.getSlot().getSlotNumber());
 					if(outputprepend!=null)
 					{
+						System.out.println();
 						System.out.println(outputprepend);			
 					}
 					System.out.println(str);

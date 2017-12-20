@@ -10,7 +10,7 @@ import plts.util.Constants;
 public class FetchDetailsCommand implements InputCommand {
 
 	public FetchDetailsCommand() {
-		// TODO Auto-generated constructor stub
+		
 	}
 
 	@Override
@@ -49,6 +49,7 @@ public class FetchDetailsCommand implements InputCommand {
 				if (str.length() > 0) {
 					if(outputprepend!=null)
 					{
+						System.out.println();
 						System.out.println(outputprepend);			
 					}
 					System.out.println(str.substring(0, str.length() - 2));

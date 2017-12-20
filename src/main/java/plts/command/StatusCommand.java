@@ -10,7 +10,7 @@ import plts.util.Constants;
 public class StatusCommand implements InputCommand {
 
 	public StatusCommand() {
-		// TODO Auto-generated constructor stub
+		
 	}
 
 	@Override
@@ -25,6 +25,7 @@ public class StatusCommand implements InputCommand {
 						.append("Registration No").append(Constants.TAB.value()).append("Colour");
 				if(outputprepend!=null)
 				{
+					System.out.println();
 					System.out.println(outputprepend);			
 				}
 				System.out.println(strHdr);

@@ -34,6 +34,7 @@ public class CreatePLCommand implements InputCommand {
 			if (engine != null && engine.getParkingLot() != null) {
 				str.append(initSize).append(" slots");
 				if (outputprepend != null) {
+					System.out.println();
 					System.out.println(outputprepend);
 				}
 				System.out.println(str);

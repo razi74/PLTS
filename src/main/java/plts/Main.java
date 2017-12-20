@@ -35,6 +35,7 @@ public class Main {
 			Scanner scanner = new Scanner(System.in);
 			try {
 				do {
+					System.out.println();
 					System.out.println("Input: ");
 					line = scanner.nextLine();
 					if (line != null && !line.isEmpty()) {
