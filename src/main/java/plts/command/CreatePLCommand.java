@@ -30,7 +30,7 @@ public class CreatePLCommand implements InputCommand {
 				inputmap.put(Constants.RETURNSTR.value(), Constants.INVALID_COMMAND.value());
 				return inputmap;
 			}
-			engine = new PLTSEngine(initSize);
+			engine = PLTSEngine.getInstance(initSize);
 			if (engine != null && engine.getParkingLot() != null) {
 				str.append(initSize).append(" slots");
 				if (outputprepend != null) {

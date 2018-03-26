@@ -5,6 +5,10 @@ import static org.testng.Assert.assertEquals;
 import java.io.File;
 import java.io.IOException;
 import java.util.Map;
+import java.util.concurrent.ExecutionException;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+import java.util.concurrent.Future;
 
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
@@ -13,9 +17,11 @@ import plts.util.Constants;
 
 public class MainTest {
 	private static Main main =null;
+	private static ExecutorService  exec = null;
 	
 	@BeforeClass
 	public static void init() throws IOException {
+		exec = Executors.newCachedThreadPool();	
 		main = new Main();
 	}
 
@@ -160,5 +166,33 @@ public class MainTest {
 		args[0] = temp+"/test_Leave5.txt";
 		Map<String,Object> map = main.execute(args);
 		assertEquals(map.get(Constants.RETURNSTR.value()),Constants.INVALID_COMMAND.value());		
+	}
+	
+	@Test
+	public void testCreateParkingLotMT() {
+		File resourcesDirectory = new File("src/test/resources");
+		String temp =resourcesDirectory.getAbsolutePath();
+		String [] args = new String[2];
+		args[0] = temp+"/test_CPL.txt";
+		args[1] = temp+"/test_CPLMT.txt";	
+		
+	
+		TestCallable tc = new TestCallable(main, args);
+		for (int i = 0; i <2; i++) {
+			Future< Map<String, Object>> ft = exec.submit(tc);
+			Map<String, Object> map= null;
+			try {
+				map = ft.get();
+			} catch (InterruptedException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (ExecutionException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			assertEquals(map.get(Constants.RETURNSTR.value()),Constants.CREATED_A_PARKING_LOT_WITH.value()+"10 slots");
+			assertEquals(((PLTSEngine)map.get(Constants.ENGINE.value())).getParkingLot().getNumberOfLots(),Integer.valueOf("10"));
+		}
+		exec.shutdown(); 
 	}
 }
